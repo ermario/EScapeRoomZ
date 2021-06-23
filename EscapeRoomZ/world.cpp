@@ -24,7 +24,7 @@ World::World(const char* p_name)
 	Room* gameroom1 = new Room("Gameroom", "You are in a bright little room");
 	Exit* exit_hall = new Exit("straight", "behind", "Main door", hall, outside, STRAIGHT);
 	exit_hall->locked = true; //Main door locked
-	Exit* exit_hall2 = new Exit("left", "behind", "Door", hall, gameroom1, LEFT, true);
+	Exit* exit_hall2 = new Exit("left", "behind", "Door", hall, gameroom1, LEFT); //oneway true
 
 	Room* gameroom2 = new Room("Gameroom", "You are in a bright little room");
 	Room* gameroom8 = new Room("Gameroom", "You are in a dark little room... something starts beeping... ");
@@ -52,8 +52,10 @@ World::World(const char* p_name)
 	entities.push_back(gameroom7);
 	entities.push_back(gameroom8);
 
-	Item* flashlight = new Item("Flashlight", "Looks like it might contain something.", bedroom, TOOL);
-	Item* key = new Item("Key", "Your house key", gameroom7);
+	Item* flashlight = new Item("Flashlight", "Just a flashlight, equip it to see in dark rooms", bedroom, TOOL);
+	Item* note = new Item("Note", "A note, there is something written on it", gameroom1, NOTE);
+	Item* key = new Item("Key", "Your house key", gameroom7, COMMON);
+
 	exit_hall->key = key;
 
 	player = new Player(p_name, "New player", bedroom);
@@ -169,7 +171,7 @@ bool World::ExecuteInteraction(vector<string>& args)
 		{
 			player->Look(args);
 		}
-		else if (Cmp(args[0], "go"))
+		else if (Cmp(args[0], "go") || Cmp(args[0], "move") || Cmp(args[0], "mv"))
 		{
 			player->Go(args);
 		}
@@ -182,6 +184,10 @@ bool World::ExecuteInteraction(vector<string>& args)
 			player->Drop(args);
 		}
 		else if (Cmp(args[0], "equip") || Cmp(args[0], "eq") || Cmp(args[0], "use"))
+		{
+			player->Equip(args);
+		}
+		else if (Cmp(args[0], "read"))
 		{
 			player->Equip(args);
 		}

@@ -11,7 +11,8 @@ using namespace std;
 enum ItemType
 {
 	COMMON,
-	TOOL
+	TOOL,
+	NOTE
 };
 
 class Item : public Entity

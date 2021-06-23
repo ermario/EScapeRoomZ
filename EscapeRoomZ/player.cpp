@@ -148,8 +148,16 @@ bool Player::Equip(const vector<string>& args)
 	if (item->item_type == TOOL) {
 		cout << "\nYou equip " << item->name << "...\n";
 		setLight();
+	}
+	if (item->item_type == NOTE) {
 
+		cout << "\n Lets play a game....\n";
+		cout << "\n In order to complete the game and survive, you will need to find the exit.\n";
+		cout << "There are 9 rooms, some of them may have 2 doors, choose one wisely ... or it will be your end.\n";
+		cout << "Only two rooms can kill you.\n";
+		cout << "\nHave fun.\n";
 
+		return false;
 	}
 	else {
 		cout << "\n" << item->name << " cannot be equipped.\n";
