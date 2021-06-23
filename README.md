@@ -1,2 +1,2 @@
-# ScapeRoomZ
+# EScapeRoomZ
 This is a text-game based created from a Zork clone
