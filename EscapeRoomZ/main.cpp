@@ -28,7 +28,7 @@ int main() {
 	World new_world(player_name);
 
 	player_input.push_back("look");
-	while (true)
+	while (!gameover)
 	{
 
 		getline(cin, input);
@@ -47,7 +47,8 @@ int main() {
 		}
 		if (Cmp(input, "quit") || Cmp(input, "exit"))
 		{
-			cout << "\nThanks for playing, see you next time.\n" << endl; break;
+			gameover = true;
+			break;
 		}
 		if (new_world.Update(player_input) == false && !ask_help)
 		{
@@ -61,6 +62,7 @@ int main() {
 			cout << "> ";
 		}
 	}
+	cout << "\nThanks for playing, see you next time.\n" << endl;
 
 	return 0;
 }

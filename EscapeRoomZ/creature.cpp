@@ -4,7 +4,7 @@
 
 
 Creature::Creature(const char* title, const char* description, Room* room) :
-	Entity(title, description, (Entity*)room)
+	Entity(title, description, (Entity*)room), alive(true)
 {
 	type = CREATURE;
 }
@@ -16,4 +16,11 @@ Creature::~Creature()
 Room* Creature::getRoomN() const
 {
 	return (Room*)prev;
+}
+
+
+void Creature::Die()
+{
+	cout << "You died.\n";
+	alive = false;
 }

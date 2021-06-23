@@ -68,7 +68,11 @@ bool Player::Go(const vector<string>& args)
 	cout << "\nYou take direction " << exit->GetDirectionName((Room*)prev) << "...\n";
 	ChangePrevTo(exit->GetDestinationName((Room*)prev));
 	prev->Look();
-
+	if (prev->type == DEATHROOM)
+	{
+		Die();
+		gameover = true;
+	}
 	return true;
 }
 
@@ -81,7 +85,7 @@ bool Player::Take(const vector<string>& args)
 
 		if (item == NULL)
 		{
-			cout << "\nThere is no item here with that name.\n";
+			cout << "\nThere is no " << args[1] << " here\n";
 			return false;
 		}
 

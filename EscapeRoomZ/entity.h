@@ -10,6 +10,7 @@ enum EntityType
 {
 	ENTITY,
 	ROOM,
+	DEATHROOM,
 	EXIT,
 	ITEM,
 	CREATURE,

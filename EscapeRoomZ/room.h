@@ -13,15 +13,15 @@ using namespace std;
 class Room : public Entity
 {
 public:
-	Room(const char* name, const char* description, bool isDark = false);
+	Room(const char* name, const char* description, bool is_dark = false, bool death_room = false);
 	~Room();
 
 	void Look() const;
 
 	Exit* GetExit(const string& direction) const;
 public:
-	bool isDark;
-
+	bool is_dark;
+	bool death_room;
 };
 
 #endif 

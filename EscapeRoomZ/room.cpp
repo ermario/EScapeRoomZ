@@ -6,11 +6,14 @@
 #include "room.h"
 
 // ----------------------------------------------------
-Room::Room(const char* title, const char* description, bool dark) :
+Room::Room(const char* title, const char* description, bool dark, bool death_r) :
 	Entity(title, description, NULL),
-	isDark(dark)
+	is_dark(dark), death_room(death_r)
 {
-	type = ROOM;
+	if (death_r)
+		type = DEATHROOM;
+	else
+		type = ROOM;
 }
 
 // ----------------------------------------------------
@@ -21,7 +24,7 @@ Room::~Room()
 
 void Room::Look() const
 {
-	if (isDark && flash_on == false)
+	if (is_dark && flash_on == false)
 	{
 		cout << "\n Is too dark to see anything\n";
 	}

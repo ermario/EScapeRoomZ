@@ -27,7 +27,7 @@ World::World(const char* p_name)
 	Exit* exit_hall2 = new Exit("left", "behind", "Door", hall, gameroom1, LEFT); //oneway true
 
 	Room* gameroom2 = new Room("Gameroom", "You are in a bright little room");
-	Room* gameroom8 = new Room("Gameroom", "You are in a dark little room... something starts beeping... ");
+	Room* gameroom8 = new Room("Gameroom", "You are in a dark little room... something starts beeping... ", false, true);
 	Exit* exit_gr1 = new Exit("straight", "behind", "Door", gameroom1, gameroom2, STRAIGHT, true);
 	Exit* exit_gr1b = new Exit("right", "behind", "Door", gameroom1, gameroom8, RIGHT, true);
 
@@ -59,6 +59,7 @@ World::World(const char* p_name)
 	exit_hall->key = key;
 
 	player = new Player(p_name, "New player", bedroom);
+
 
 	entities.push_back(player);
 

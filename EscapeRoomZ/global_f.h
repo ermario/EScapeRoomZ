@@ -16,4 +16,5 @@ void setDark();
 void setLight();
 void helpingGuide();
 extern bool flash_on;
+extern bool gameover;
 #endif

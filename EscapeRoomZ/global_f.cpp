@@ -1,6 +1,7 @@
 #include "global_f.h"
 
 bool flash_on = false;
+bool gameover = false;
 
 bool Cmp(const string& a, const string& b) // Compare string to string
 {

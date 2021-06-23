@@ -16,10 +16,10 @@ public:
 	~Creature();
 
 	Room* getRoomN() const;
-
+	virtual void Die();
 
 public:
-
+	bool alive;
 };
 
 #endif 
