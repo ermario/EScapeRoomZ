@@ -49,7 +49,7 @@ bool Player::Go(const vector<string>& args)
 
 	if (exit == NULL)
 	{
-		cout << "\nThere is no exit at '" << args[1] << "'.\n";
+		cout << "\nYou can't go '" << args[1] << "'.\n";
 		return false;
 	}
 	if (exit->closed)
@@ -204,13 +204,13 @@ bool Player::UnLock(const vector<string>& args)
 
 	if (exit == NULL)
 	{
-		cout << "\nThere is no exit at '" << args[1] << "'.\n";
+		cout << "\nThere is nothing to unlock there. (" << args[1] << ")." << endl;
 		return false;
 	}
 
 	if (exit->locked == false)
 	{
-		cout << "\nThat exit is not locked.\n";
+		cout << "\nThat exit is not locked." <<endl;
 		return false;
 	}
 
@@ -218,17 +218,17 @@ bool Player::UnLock(const vector<string>& args)
 
 	if (item == NULL)
 	{
-		cout << "\nKey '" << args[3] << "' not found in your inventory.\n";
+		cout << "\nCan't find Key '" << args[3] << "' in your inventory." << endl;
 		return false;
 	}
 
 	if (exit->key != item)
 	{
-		cout << "\nKey '" << item->name << "' is not the key for " << exit->GetDirectionName((Room*)prev) << ".\n";
+		cout << "\nKey '" << item->name << "' is not the key for " << exit->GetDirectionName((Room*)prev) << "." << endl;
 		return false;
 	}
 
-	cout << "\nYou unlock " << exit->GetDirectionName((Room*)prev) << "...\n";
+	cout << "\nYou unlocked " << exit->GetDirectionName((Room*)prev) << "..." << endl;
 
 	exit->locked = false;
 
