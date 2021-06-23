@@ -1,6 +1,7 @@
 #ifndef GLOBAL_F
 #define GLOBAL_F
 
+#include<iostream>
 #include <string>
 #include <sstream>
 #include <vector>
@@ -13,5 +14,6 @@ bool Cmp(const string& a, const char* b);
 void Tokenize(const string& line, vector<string>& arguments);
 void setDark();
 void setLight();
+void helpingGuide();
 extern bool flash_on;
 #endif

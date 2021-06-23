@@ -41,3 +41,8 @@ void setLight()
 {
 	flash_on = true;
 }
+
+void helpingGuide()
+{
+	cout << "\n------------- HELPING GUIDE -------------\n";
+}
