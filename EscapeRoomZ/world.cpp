@@ -17,7 +17,8 @@ World::World(const char* p_name)
 	ttimer = clock();
 	Room* bedroom = new Room("Bedroom", "You are in your bedroom, but everything feels weird");
 	Room* hall = new Room("Hall", "You got into a long creepy hall", true);
-	Room* outside = new Room("Outside", "Outside your house");
+	Room* outside = new Room("Outside", "Congratulations! You finished the game, it was all a dream and you woke up fine.");
+	outside->type = FINISHROOM;
 
 	Exit* exit_bedroom = new Exit("right", "behind", "Door", bedroom, hall, RIGHT);
 	Exit* exit_bedroom2 = new Exit("left", "right", "Window", bedroom, outside, LEFT);
@@ -72,9 +73,13 @@ World::World(const char* p_name)
 
 	Item* flashlight = new Item("Flashlight", "Just a flashlight, equip it to see in dark rooms", bedroom, TOOL);
 	Item* note = new Item("Note", "A note, there is something written on it", gameroom1, NOTE);
-	Item* key = new Item("Key", "Your house key", gameroom7, COMMON);
+	Item* key = new Item("key", "Your house key", gameroom7, COMMON);
 
 	exit_hall->key = key;
+
+	entities.push_back(flashlight);
+	entities.push_back(note);
+	entities.push_back(key);
 
 	// PLAYER DECLARATION
 	player = new Player(p_name, "New player", bedroom);
@@ -224,19 +229,11 @@ bool World::ExecuteInteraction(vector<string>& args)
 	{
 		break;
 	}
-	case 4: // commands with three arguments ------------------------------
+	case 4:
 	{
 		if (Cmp(args[0], "unlock") || Cmp(args[0], "unlk"))
 		{
 			player->UnLock(args);
-		}
-		else if (Cmp(args[0], "take") || Cmp(args[0], "pick"))
-		{
-			player->Take(args);
-		}
-		else if (Cmp(args[0], "drop") || Cmp(args[0], "put"))
-		{
-			player->Drop(args);
 		}
 		else
 			end = false;

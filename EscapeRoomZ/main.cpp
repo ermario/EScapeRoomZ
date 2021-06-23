@@ -17,9 +17,10 @@ int main() {
 	const char* player_name;
 	bool ask_help = false;
 
+	cout << "\n---------------------> EScapeRoomZ <---------------------\n\n";
 	cout << "You feel dizzy.. you are trying to wake up but you have an awful headache...\n";
-	cout << "You cant remember anything... you are trying to remember your name...\n";
-	cout << "Insert your name >";
+	cout << "You can't remember anything... you are trying to remember your name...\n";
+	cout << "Insert your name: >";
 	cin >> aux_input;
 	player_name = aux_input.c_str();
 

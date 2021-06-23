@@ -5,7 +5,7 @@
 #include "creature.h"
 #include "room.h"
 
-// ----------------------------------------------------
+
 Room::Room(const char* title, const char* description, bool dark, bool death_r) :
 	Entity(title, description, NULL),
 	is_dark(dark), death_room(death_r)
@@ -16,7 +16,7 @@ Room::Room(const char* title, const char* description, bool dark, bool death_r) 
 		type = ROOM;
 }
 
-// ----------------------------------------------------
+
 Room::~Room()
 {
 }
@@ -32,8 +32,12 @@ void Room::Look() const
 	{
 		cout << "\n" << name << endl;
 		cout << description << endl;
-
-		// List exits --
+		if (type == FINISHROOM)
+		{
+			gameover = true;
+			return;
+		}
+		
 		for (list<Entity*>::const_iterator x = contains.begin(); x != contains.cend(); ++x)
 		{
 			if ((*x)->type == EXIT)
@@ -43,7 +47,7 @@ void Room::Look() const
 			}
 		}
 
-		// List items --
+		
 		for (list<Entity*>::const_iterator x = contains.begin(); x != contains.cend(); ++x)
 		{
 			if ((*x)->type == ITEM)
@@ -59,7 +63,6 @@ void Room::Look() const
 }
 
 
-// ----------------------------------------------------
 Exit* Room::GetExit(const string& direction) const
 {
 	for (list<Entity*>::const_iterator x = contains.begin(); x != contains.cend(); ++x)

@@ -201,7 +201,6 @@ bool Player::UnLock(const vector<string>& args)
 {
 
 	Exit* exit = getRoomN()->GetExit(args[1]);
-
 	if (exit == NULL)
 	{
 		cout << "\nThere is nothing to unlock there. (" << args[1] << ")." << endl;
@@ -224,11 +223,11 @@ bool Player::UnLock(const vector<string>& args)
 
 	if (exit->key != item)
 	{
-		cout << "\nKey '" << item->name << "' is not the key for " << exit->GetDirectionName((Room*)prev) << "." << endl;
+		cout << "\nKey '" << item->name << "' is not the key for " << exit->description << "." << endl;
 		return false;
 	}
 
-	cout << "\nYou unlocked " << exit->GetDirectionName((Room*)prev) << "..." << endl;
+	cout << "\nYou unlocked " << exit->description << "..." << endl;
 
 	exit->locked = false;
 

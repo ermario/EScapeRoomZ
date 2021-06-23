@@ -11,6 +11,7 @@ enum EntityType
 	ENTITY,
 	ROOM,
 	DEATHROOM,
+	FINISHROOM,
 	EXIT,
 	ITEM,
 	CREATURE,
