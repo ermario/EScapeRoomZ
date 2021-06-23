@@ -46,4 +46,21 @@ void setLight()
 void helpingGuide()
 {
 	cout << "\n------------- HELPING GUIDE -------------\n";
+	cout << "The objective of the game is to find out what is going on in your house, explore, take items, survive and exit your house. \n";
+	cout << "\nHELPFUL COMMANDS: \n";
+	cout << "- Look | l\n";
+	cout << "- Inventory | i\n";
+	cout << "- Go (direction) | Move (direction) | mv (direction)\n";
+	cout << "- directions: (straight/right/left/behind)\n";
+	cout << "- Take (item) | Pick (item)\n";
+	cout << "- Drop (item) | Put (item)\n";
+	cout << "- Equip (item) | eq (item) | Use (item)\n";
+	cout << "- Unequip (item) | uneq (item)\n";
+	cout << "- Read (note)\n";
+	cout << "- Unlock (direction) with (key)\n";
+	cout << "\nTIPS:\n";
+	cout << " - Use the flashlight to see in the dark\n";
+	cout << " - Use a key to unlock a door\n";
+	cout << " - Read a note to get more information or hints\n";
+	cout << "----------------------------------------\n\n";
 }

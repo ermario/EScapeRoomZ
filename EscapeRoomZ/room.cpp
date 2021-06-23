@@ -27,6 +27,7 @@ void Room::Look() const
 	if (is_dark && flash_on == false)
 	{
 		cout << "\n Is too dark to see anything\n";
+		cout << "You can use the door behind to go back\n";
 	}
 	else
 	{

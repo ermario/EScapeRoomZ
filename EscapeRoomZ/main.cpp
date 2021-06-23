@@ -7,7 +7,6 @@
 #define esc 27
 using namespace std;
 
-// ----------------------------------------------
 
 int main() {
 

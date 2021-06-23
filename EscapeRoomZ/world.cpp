@@ -146,15 +146,15 @@ bool World::ExecuteInteraction(vector<string>& args)
 			player->Go(args);
 		}
 
-		else if (Cmp(args[0], "back"))
+		else if (Cmp(args[0], "behind"))
 		{
 			if (args.size() == 1)
 			{
-				args.push_back("back");
+				args.push_back("behind");
 			}
 			else
 			{
-				args[1] = "back";
+				args[1] = "behind";
 			}
 			player->Go(args);
 		}
