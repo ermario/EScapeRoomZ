@@ -12,6 +12,8 @@
 
 World::World(const char* p_name)
 {
+	// ROOMS AND EXITS DECLARATION
+
 	ttimer = clock();
 	Room* bedroom = new Room("Bedroom", "You are in your bedroom, but everything feels weird");
 	Room* hall = new Room("Hall", "You got into a long creepy hall", true);
@@ -32,12 +34,26 @@ World::World(const char* p_name)
 	Exit* exit_gr1b = new Exit("right", "behind", "Door", gameroom1, gameroom8, RIGHT, true);
 
 	Room* gameroom3 = new Room("Gameroom", "You are in a bright little room");
-	Room* gameroom4 = new Room("Gameroom", "You are in a bright little room");
-	Room* gameroom5 = new Room("Gameroom", "You are in a bright little room");
-	Room* gameroom6 = new Room("Gameroom", "You are in a bright little room");
-	Room* gameroom7 = new Room("Gameroom", "You are in a bright little room");
+	Room* gameroom9 = new Room("Gameroom", "You are in a dark little room... something starts beeping...", false, true);
+	Exit* exit_gr2 = new Exit("straight", "behind", "Door", gameroom2, gameroom3, STRAIGHT, true);
+	Exit* exit_gr2b = new Exit("right", "behind", "Door", gameroom2, gameroom9, RIGHT, true);
 
-	Room* gameroom9 = new Room("Gameroom", "You are in a dark little room... something starts beeping...");
+	Room* gameroom4 = new Room("Gameroom", "You are in a bright little room");
+	Exit* exit_gr3 = new Exit("right", "behind", "Door", gameroom3, gameroom4, RIGHT, true);
+
+	Room* gameroom5 = new Room("Gameroom", "You are in a bright little room");
+	Exit* exit_gr4 = new Exit("straight", "behind", "Door", gameroom4, gameroom5, STRAIGHT, true);
+	Exit* exit_gr4b = new Exit("right", "behind", "Door", gameroom4, gameroom9, RIGHT, true);
+
+	Room* gameroom6 = new Room("Gameroom", "You are in a bright little room");
+	Exit* exit_gr5 = new Exit("right", "behind", "Door", gameroom5, gameroom6, RIGHT, true);
+
+	Room* gameroom7 = new Room("Gameroom", "You are in a bright little room");
+	Exit* exit_gr6 = new Exit("straight", "behind", "Door", gameroom6, gameroom7, STRAIGHT, true);
+	Exit* exit_gr6b = new Exit("right", "behind", "Door", gameroom6, gameroom8, RIGHT, true);
+
+	Exit* exit_gr7 = new Exit("straight", "behind", "Door", gameroom7, hall, STRAIGHT, true);
+	Exit* exit_gr7b = new Exit("right", "behind", "Door", gameroom7, gameroom9, RIGHT, true);
 
 
 	entities.push_back(bedroom);
@@ -52,12 +68,15 @@ World::World(const char* p_name)
 	entities.push_back(gameroom7);
 	entities.push_back(gameroom8);
 
+	// ITEMS DECLARATION
+
 	Item* flashlight = new Item("Flashlight", "Just a flashlight, equip it to see in dark rooms", bedroom, TOOL);
 	Item* note = new Item("Note", "A note, there is something written on it", gameroom1, NOTE);
 	Item* key = new Item("Key", "Your house key", gameroom7, COMMON);
 
 	exit_hall->key = key;
 
+	// PLAYER DECLARATION
 	player = new Player(p_name, "New player", bedroom);
 
 
