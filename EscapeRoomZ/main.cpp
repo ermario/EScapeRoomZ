@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <conio.h>
+#include "global_f.h"
+#include "world.h"
+#define esc 27
+using namespace std;
+
+// ----------------------------------------------
+
+int main() {
+
+	string input;
+	vector<string> player_input;
+	string aux_input;
+	const char* player_name;
+
+	cout << "You feel dizzy.. you are trying to wake up but you have an awful headache...\n";
+	cout << "You cant remember anything... you are trying to remember your name...\n";
+	cout << "Insert your name >";
+	cin >> aux_input;
+	player_name = aux_input.c_str();
+
+	cout << "\n Ohh yes... " << aux_input << " ...now you start to remember...\n";
+
+	World new_world(player_name);
+
+	player_input.push_back("look");
+	while (1)
+	{
+
+		getline(cin, input);
+		if (input.length() > 0)
+		{
+			Tokenize(input, player_input);
+			cout << ">";
+		}
+		else if (input.length() <= 0) {
+			cout << ">";
+		}
+		if (Cmp(input, "quit") || Cmp(input, "exit"))
+		{
+			cout << "BYE BYE" << endl; break;
+		}
+		if (new_world.Update(player_input) == false)
+		{
+			cout << "\nSorry, I do not understand your command.\n";
+		}
+		if (player_input.size() > 0)
+		{
+			player_input.clear();
+			input = "";
+			cout << "> ";
+		}
+	}
+
+	return 0;
+}
