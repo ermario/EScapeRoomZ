@@ -153,7 +153,7 @@ bool Player::Equip(const vector<string>& args)
 		cout << "\nYou equip " << item->name << "...\n";
 		setLight();
 	}
-	if (item->item_type == NOTE) {
+	else if (item->item_type == NOTE) {
 
 		cout << "\n Lets play a game....\n";
 		cout << "\n In order to complete the game and survive, you will need to find the exit.\n";
