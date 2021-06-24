@@ -4,9 +4,7 @@
 
 #include <string>
 #include <list>
-#include <time.h>
 
-#define TICK_FREQUENCY 0.5f
 
 using namespace std;
 
@@ -22,7 +20,7 @@ public:
 
 	bool Update(vector<string>& args);
 	bool ExecuteInteraction(vector<string>& args);
-	void UpdateGame();
+
 private:
 
 	clock_t ttimer;

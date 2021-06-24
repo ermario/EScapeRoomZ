@@ -46,7 +46,8 @@ void setLight()
 void helpingGuide()
 {
 	cout << "\n------------- HELPING GUIDE -------------\n";
-	cout << "The objective of the game is to find out what is going on in your house, explore, take items, survive and exit your house. \n";
+	cout << "The objective of the game is to find out what is going on in your house\n";
+	cout << "Explore, take items, survive and exit your house. \n";
 	cout << "\nHELPFUL COMMANDS: \n";
 	cout << "- Look | l\n";
 	cout << "- Inventory | i\n";

@@ -32,10 +32,10 @@ int main() {
 	{
 
 		getline(cin, input);
+		cout << "---------------";
 		if (input.length() > 0)
 		{
 			Tokenize(input, player_input);
-			cout << ">";
 		}
 		else if (input.length() <= 0) {
 			cout << ">";
