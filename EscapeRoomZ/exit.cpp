@@ -7,7 +7,7 @@ Exit::Exit(const char* name, const char* next_name, const char* description, Roo
 	Entity(name, description, (Entity*)origin),
 	closed(false), locked(false), key(NULL), one_way(one_way), destination(destination), next_name(next_name), ex_dir(ex_dir)
 {
-	type = EXIT;
+	type = EntityType::EXIT;
 
 	if (one_way == false)
 		if (destination == NULL)

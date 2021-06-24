@@ -11,9 +11,9 @@ Room::Room(const char* title, const char* description, bool dark, bool death_r) 
 	is_dark(dark), death_room(death_r)
 {
 	if (death_r)
-		type = DEATHROOM;
+		type = EntityType::DEATHROOM;
 	else
-		type = ROOM;
+		type = EntityType::ROOM;
 }
 
 
@@ -33,7 +33,7 @@ void Room::Look() const
 	{
 		cout << "\n" << name << endl;
 		cout << description << endl;
-		if (type == FINISHROOM)
+		if (type == EntityType::FINISHROOM)
 		{
 			gameover = true;
 			return;
@@ -41,7 +41,7 @@ void Room::Look() const
 		
 		for (list<Entity*>::const_iterator x = contains.begin(); x != contains.cend(); ++x)
 		{
-			if ((*x)->type == EXIT)
+			if ((*x)->type == EntityType::EXIT)
 			{
 				Exit* exit = (Exit*)*x;
 				cout << "\nYou see a " << exit->description << " in direction (" << exit->GetDirectionName(this) << ")\n";
@@ -51,7 +51,7 @@ void Room::Look() const
 		
 		for (list<Entity*>::const_iterator x = contains.begin(); x != contains.cend(); ++x)
 		{
-			if ((*x)->type == ITEM)
+			if ((*x)->type == EntityType::ITEM)
 			{
 				Item* item = (Item*)*x;
 				cout << "\nThere is an item here: " << item->name;
@@ -68,7 +68,7 @@ Exit* Room::GetExit(const string& direction) const
 {
 	for (list<Entity*>::const_iterator x = contains.begin(); x != contains.cend(); ++x)
 	{
-		if ((*x)->type == EXIT)
+		if ((*x)->type == EntityType::EXIT)
 		{
 			Exit* ex = (Exit*)*x;
 			if (Cmp(ex->GetDirectionName(this), direction))

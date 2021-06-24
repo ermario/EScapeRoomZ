@@ -9,7 +9,7 @@ Entity::Entity(const char* name, const char* description, Entity* prev = NULL) :
 	if (prev != NULL)
 		prev->contains.push_back(this);
 
-	type = ENTITY;
+	type = EntityType::ENTITY;
 }
 
 Entity::~Entity()

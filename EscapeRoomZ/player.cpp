@@ -9,7 +9,7 @@
 Player::Player(const char* title, const char* description, Room* room) :
 	Creature(title, description, room)
 {
-	type = PLAYER;
+	type = EntityType::PLAYER;
 }
 
 
@@ -23,7 +23,7 @@ void Player::Look(const vector<string>& args) const
 	{
 		for (list<Entity*>::const_iterator it = prev->contains.begin(); it != prev->contains.cend(); ++it)
 		{
-			if (Cmp((*it)->name, args[1]) || ((*it)->type == EXIT && Cmp(args[1], ((Exit*)(*it))->GetDirectionName((Room*)prev))))
+			if (Cmp((*it)->name, args[1]) || ((*it)->type == EntityType::EXIT && Cmp(args[1], ((Exit*)(*it))->GetDirectionName((Room*)prev))))
 			{
 				(*it)->Look();
 				return;
@@ -68,7 +68,7 @@ bool Player::Go(const vector<string>& args)
 	cout << "\nYou take direction " << exit->GetDirectionName((Room*)prev) << "...\n";
 	ChangePrevTo(exit->GetDestinationName((Room*)prev));
 	prev->Look();
-	if (prev->type == DEATHROOM)
+	if (prev->type == EntityType::DEATHROOM)
 	{
 		Die();
 		gameover = true;
@@ -81,7 +81,7 @@ bool Player::Take(const vector<string>& args)
 {
 	if (args.size() == 2)
 	{
-		Item* item = (Item*)prev->Find(args[1], ITEM);
+		Item* item = (Item*)prev->Find(args[1], EntityType::ITEM);
 
 		if (item == NULL)
 		{
@@ -100,7 +100,7 @@ bool Player::Take(const vector<string>& args)
 void Player::Inventory() const
 {
 	list<Entity*> items;
-	FindAll(ITEM, items);
+	FindAll(EntityType::ITEM, items);
 
 	if (items.size() == 0)
 	{
@@ -121,7 +121,7 @@ bool Player::Drop(const vector<string>& args)
 {
 	if (args.size() == 2)
 	{
-		Item* item = (Item*)Find(args[1], ITEM);
+		Item* item = (Item*)Find(args[1], EntityType::ITEM);
 
 		if (item == NULL)
 		{
@@ -130,6 +130,10 @@ bool Player::Drop(const vector<string>& args)
 		}
 
 		cout << "\nYou drop " << item->name << "...\n";
+		if (item->item_type == ItemType::TOOL)
+		{
+			UnEquip(args);
+		}
 		item->ChangePrevTo(prev);
 
 		return true;
@@ -141,7 +145,7 @@ bool Player::Drop(const vector<string>& args)
 
 bool Player::Equip(const vector<string>& args)
 {
-	Item* item = (Item*)Find(args[1], ITEM);
+	Item* item = (Item*)Find(args[1], EntityType::ITEM);
 
 	if (item == NULL)
 	{
@@ -149,11 +153,11 @@ bool Player::Equip(const vector<string>& args)
 		return false;
 	}
 
-	if (item->item_type == TOOL) {
+	if (item->item_type == ItemType::TOOL) {
 		cout << "\nYou equip " << item->name << "...\n";
 		setLight();
 	}
-	else if (item->item_type == NOTE) {
+	else if (item->item_type == ItemType::NOTE) {
 
 		cout << "\n Lets play a game....\n";
 		cout << "\n In order to complete the game and survive, you will need to find the exit.\n";
@@ -175,7 +179,7 @@ bool Player::Equip(const vector<string>& args)
 bool Player::UnEquip(const vector<string>& args)
 {
 
-	Item* item = (Item*)Find(args[1], ITEM);
+	Item* item = (Item*)Find(args[1], EntityType::ITEM);
 
 	if (item == NULL)
 	{
@@ -183,7 +187,7 @@ bool Player::UnEquip(const vector<string>& args)
 		return false;
 	}
 
-	if (item->item_type == TOOL) {
+	if (item->item_type == ItemType::TOOL) {
 		cout << "\nYou un-equip " << item->name << "...\n";
 		setDark();
 	}
@@ -213,7 +217,7 @@ bool Player::UnLock(const vector<string>& args)
 		return false;
 	}
 
-	Item* item = (Item*)Find(args[3], ITEM);
+	Item* item = (Item*)Find(args[3], EntityType::ITEM);
 
 	if (item == NULL)
 	{

@@ -8,7 +8,7 @@ class Room;
 
 using namespace std;
 
-enum ItemType
+enum class ItemType
 {
 	COMMON,
 	TOOL,
@@ -18,7 +18,7 @@ enum ItemType
 class Item : public Entity
 {
 public:
-	Item(const char* name, const char* description, Entity* prev, ItemType item_type = COMMON);
+	Item(const char* name, const char* description, Entity* prev, ItemType item_type = ItemType::COMMON);
 	~Item();
 
 public:
