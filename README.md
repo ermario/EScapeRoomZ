@@ -50,7 +50,8 @@ The main features are:
 	
 It was really frustrating at the beginning because I forgot a lot from c++, but at the end I really enjoyed making the game and even if I'm not accepted on the course, I will keep doing some personal projects and learning more because game development is something I really want to do.
 
-
+# SOMETHING TO KNOW ABOUT THE CODE:
+I've used Visual Studio 2019 Community edition and the code has 0 errors and 0 warnings.
 	 
 #LICENSE
 MIT License
