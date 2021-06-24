@@ -10,10 +10,12 @@ GitHub: https://github.com/ermario/EScapeRoomZ
 #HELPFUL COMMANDS
 
 	- Look | l
+	- Look (entity)| l (entity)
 	- Inventory | i
 	- Go (direction) | Move (direction) | mv (direction)
-	- directions: (straight/right/left/behind)
+	directions: (straight/right/left/behind)
 	- Take (item) | Pick (item)
+	- Take (item) from (entity)| Pick (item) from (entity)
 	- Drop (item) | Put (item)
 	- Equip (item) | eq (item) | Use (item)
 	- Unequip (item) | uneq (item)
@@ -22,6 +24,7 @@ GitHub: https://github.com/ermario/EScapeRoomZ
 	
 #TIPS
 
+	 - Entities may contain items inside
 	 - Use the flashlight to see in the dark
 	 - Use a key to unlock a door
 	 - Read a note to get more information or hints
