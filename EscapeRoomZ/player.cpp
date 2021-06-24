@@ -88,11 +88,38 @@ bool Player::Take(const vector<string>& args)
 			cout << "\nThere is no " << args[1] << " here\n";
 			return false;
 		}
-
+		if (item->item_type == ItemType::FORNITURE)
+		{
+			cout << "\nYou can't take " << args[1] << " with you\n";
+			return false;
+		}
 		cout << "\nYou take " << item->name << ".\n";
 		item->ChangePrevTo(this);
 	}
+	if (args.size() == 4)
+	{
+		Item* item = (Item*)prev->Find(args[3], EntityType::ITEM);
 
+		if (item == NULL)
+			item = (Item*)Find(args[3], EntityType::ITEM);
+
+		if (item == NULL)
+		{
+			cout << "\nCan't find '" << args[3] << "' in this room.\n";
+			return false;
+		}
+
+		Item* subitem = (Item*)item->Find(args[1], EntityType::ITEM);
+
+		if (subitem == NULL)
+		{
+			cout << "\n" << item->name << " does not contain '" << args[1] << "'.\n";
+			return false;
+		}
+
+		cout << "\nYou take " << subitem->name << " from " << item->name << ".\n";
+		subitem->ChangePrevTo(this);
+	}
 	return false;
 }
 

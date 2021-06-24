@@ -18,8 +18,13 @@ Entity::~Entity()
 
 void Entity::Look() const
 {
-	cout << name << "\n";
-	cout << description << "\n";
+	cout << name << endl;
+	cout << description << endl;
+	for (list<Entity*>::const_iterator x = contains.begin(); x != contains.cend(); ++x)
+	{
+		cout << name << " contains: ";
+		cout << (*x)->name << endl;
+	}
 }
 
 void Entity::Update()

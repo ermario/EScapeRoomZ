@@ -71,7 +71,8 @@ World::World(const char* p_name)
 
 	// ITEMS DECLARATION
 
-	Item* flashlight = new Item("Flashlight", "Just a flashlight, equip it to see in dark rooms", bedroom, ItemType::TOOL);
+	Item* table = new Item("Desktop", "Your destkop, it may have something inside the drawer", bedroom, ItemType::FORNITURE);
+	Item* flashlight = new Item("Flashlight", "Just a flashlight, equip it to see in dark rooms", table, ItemType::TOOL);
 	Item* note = new Item("Note", "A note, there is something written on it", gameroom1, ItemType::NOTE);
 	Item* key = new Item("key", "Your house key", gameroom7, ItemType::COMMON);
 
@@ -218,6 +219,10 @@ bool World::ExecuteInteraction(vector<string>& args)
 		if (Cmp(args[0], "unlock") || Cmp(args[0], "unlk"))
 		{
 			player->UnLock(args);
+		}
+		else if (Cmp(args[0], "take") || Cmp(args[0], "pick") || Cmp(args[0], "get"))
+		{
+			player->Take(args);
 		}
 		else
 			end = false;

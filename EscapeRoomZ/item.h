@@ -12,7 +12,8 @@ enum class ItemType
 {
 	COMMON,
 	TOOL,
-	NOTE
+	NOTE, 
+	FORNITURE
 };
 
 class Item : public Entity

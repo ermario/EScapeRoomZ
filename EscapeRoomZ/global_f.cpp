@@ -50,10 +50,12 @@ void helpingGuide()
 	cout << "Explore, take items, survive and exit your house. \n";
 	cout << "\nHELPFUL COMMANDS: \n";
 	cout << "- Look | l\n";
+	cout << "- Look (entity)| l (entity)\n";
 	cout << "- Inventory | i\n";
 	cout << "- Go (direction) | Move (direction) | mv (direction)\n";
-	cout << "- directions: (straight/right/left/behind)\n";
+	cout << "directions: (straight/right/left/behind)\n";
 	cout << "- Take (item) | Pick (item)\n";
+	cout << "- Take (item) from (entity)| Pick (item) from (entity)\n";
 	cout << "- Drop (item) | Put (item)\n";
 	cout << "- Equip (item) | eq (item) | Use (item)\n";
 	cout << "- Unequip (item) | uneq (item)\n";
